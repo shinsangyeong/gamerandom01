@@ -60,19 +60,17 @@ function play() {
     }
 
     history.push(userValue)
-    console.log(history)
 
-    if(chances < 1 ){
-        gameOver=true;
-        
+
+     // 게임 종료 처리
+     if (chances === 0 && userValue != computerNum) {
+        gameOver = true;
+        resultArea.textContent = "💀 GAME OVER 💀";
     }
 
-    if(gameOver == true){
+    if (gameOver) {
         playButton.disabled = true;
-
     }
-
-    
 }
 
 
@@ -86,6 +84,7 @@ function reset() {
     resultArea.textContent = "결과값이 여기 나옵니다."
     chanceArea.textContent = `남은 기회: ${chances}번`;
     playButton.disabled = false;
+    gameOver = false; // 게임 오버 상태 초기화
 }
 
 pickRandomNum();
